@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1. 创建 XMLHttpRequest 对象
+    var xmlhttp = new XMLHttpRequest()
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest()
+    } else if (window.ActiveXObject) {
+        xmlhttp = new ActiveXObject('microsoft.XMLHTTP')
+    } else {
+        alert('浏览器不支持')
+    }
+    // 2. 注册回调函数
+    if (xmlhttp != null) {
+        xmlhttp.onreadystatechange = callback
+    }
+
+    // 3. 构建 url 配置请求参数
+    var url = '/ajax/js'
+
+    // 4. 发送请求去
+    xmlhttp.open('GET', url, true)
+    // 发送请求
+    xmlhttp.send(null)
+
+    // 5.处理回调函数
+    function callback() {
+        // 判断XMLHttpRequest 状态 0, 1, 2, 3, 4
+        // 等于 4 后台响应结果已经结果
+        if (xmlhttp.readyState === 4) {
+            // http 状态码
+            console.log(xmlhttp.status)
+        }
+    }
+    // 跨域的错误, 同源策略:协议,地址,端口
+</script>
+
+</body>
+</html>

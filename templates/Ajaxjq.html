@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/assets/plugins/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<p>Jquery 中使用 ajax</p>
+<a>提交一下</a>
+<script>
+    //
+    $(document).ready(function () {
+        // 绑定标签,点击 a 标签才发送请求
+        $('a').click(function () {
+            // 定义ajax 请求
+            $.ajax({
+                // 请求配置包含请求方法,地址,成功打印,错误打印,请求参数
+                url: '/ajax/js',
+                method: 'POST',
+                data: {
+                    // 参数填写
+                    usrename: 'zhangsan',
+                    password: 'admin'
+                },
+                // 请求回调参数
+                success: function (res) {
+                    console.log(res)
+                    alert('成功了')
+                },
+                // 自定义错误显示
+                error: function (
+                ) {
+                    alert('出错了')
+                },
+                // 请求完成,无论成功还是失败,都会执行这里,
+                complete: function () {
+                    alert('请求完成了')
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>

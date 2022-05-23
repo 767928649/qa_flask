@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax 快捷函数</title>
+    <script src="/assets/plugins/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<p>jquery 快捷函数的使用</p>
+<a href="javascript:;">post点击一下</a>
+<script>
+    $(function () {
+        $.ajaxSetup({
+            headers: {
+                'appfrom': 'h5'
+            },
+            // 回调处理,获取时间状态码
+            error: function (event) {
+                console.log(event.status)
+                if (event.status === 401) {
+                    alert('请登录')
+                } else {
+                    alert('发生了错误!!')
+
+                }
+            }
+        })
+        $('a').click(function () {
+            {#$.post('/ajax/js', {#}
+            {#$.get('/ajax/js', {#}
+            // getJSON 默认 get 请求
+            $.getJSON('/ajax/js', {
+                    usrename: 'zhangsan',
+                    password: 'admin'
+                },
+                // 处理回调,获取数据的处理
+                function (res) {
+                    // 需要转换
+                    res = JSON.parse(res)
+                    console.log(res)
+                })
+        })
+    })
+</script>
+</body>
+</html>
