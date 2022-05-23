@@ -55,3 +55,6 @@ app.jinja_env.filters['dt_format_show'] = dt_format_show
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
+
+
+app.run()
